@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ColorPalette @ঔৣ፝ N4! — Explore • Choose • Create</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+
+  <!-- TOP NAVIGATION -->
+  <header id="topNav">
+    <div class="logo-area">
+      <div class="logo-icon-wrap" aria-hidden="true">
+        <div class="logo-circle-gradient"></div>
+      </div>
+      <div class="logo-text-group">
+        <div class="logo-brand">
+          <span class="logo-text-white">Color</span><span class="logo-text-accent">Palette - @ঔৣ፝ N4!</span>
+        </div>
+        <span class="logo-subtitle">Explore • Choose • Create</span>
+      </div>
+    </div>
+
+    <div class="nav-search">
+      <span class="search-icon" aria-hidden="true">🔍</span>
+      <input id="searchInput" type="text" placeholder="Search color by HEX, RGB, HSL, or name..." autocomplete="off" aria-label="Search colors">
+    </div>
+
+    <div class="nav-actions">
+      <button id="themeToggle" aria-label="Toggle theme" title="Toggle Theme">☀️</button>
+      <button id="favoritesNavBtn" aria-label="Favorites" title="Favorites">🔖</button>
+      <button id="featuresBtn" aria-label="Features" title="Features">⚡</button>
+      <button id="settingsBtn" aria-label="Settings" title="Settings">⚙️</button>
+      <button id="mobileMenuBtn" class="mobile-only" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <!-- MAIN LAYOUT -->
+  <div id="appLayout">
+
+    <!-- LEFT SIDEBAR -->
+    <aside id="sidebar">
+      <nav id="categoryNav" aria-label="Color Categories">
+        <button class="category-item active" data-category="all">
+          <span class="cat-dot" style="background: #6366f1;"></span>
+          <span class="cat-name">All Colors</span>
+          <span class="cat-count" data-count-for="all"></span>
+        </button>
+        <button class="category-item" data-category="red">
+          <span class="cat-dot" style="background: #ef4444;"></span>
+          <span class="cat-name">Red</span>
+          <span class="cat-count" data-count-for="red"></span>
+        </button>
+        <button class="category-item" data-category="orange">
+          <span class="cat-dot" style="background: #f97316;"></span>
+          <span class="cat-name">Orange</span>
+          <span class="cat-count" data-count-for="orange"></span>
+        </button>
+        <button class="category-item" data-category="yellow">
+          <span class="cat-dot" style="background: #eab308;"></span>
+          <span class="cat-name">Yellow</span>
+          <span class="cat-count" data-count-for="yellow"></span>
+        </button>
+        <button class="category-item" data-category="green">
+          <span class="cat-dot" style="background: #22c55e;"></span>
+          <span class="cat-name">Green</span>
+          <span class="cat-count" data-count-for="green"></span>
+        </button>
+        <button class="category-item" data-category="cyan">
+          <span class="cat-dot" style="background: #06b6d4;"></span>
+          <span class="cat-name">Cyan</span>
+          <span class="cat-count" data-count-for="cyan"></span>
+        </button>
+        <button class="category-item" data-category="blue">
+          <span class="cat-dot" style="background: #3b82f6;"></span>
+          <span class="cat-name">Blue</span>
+          <span class="cat-count" data-count-for="blue"></span>
+        </button>
+        <button class="category-item" data-category="purple">
+          <span class="cat-dot" style="background: #8b5cf6;"></span>
+          <span class="cat-name">Purple</span>
+          <span class="cat-count" data-count-for="purple"></span>
+        </button>
+        <button class="category-item" data-category="pink">
+          <span class="cat-dot" style="background: #ec4899;"></span>
+          <span class="cat-name">Pink</span>
+          <span class="cat-count" data-count-for="pink"></span>
+        </button>
+        <button class="category-item" data-category="brown">
+          <span class="cat-dot" style="background: #a16207;"></span>
+          <span class="cat-name">Brown</span>
+          <span class="cat-count" data-count-for="brown"></span>
+        </button>
+        <button class="category-item" data-category="gray">
+          <span class="cat-dot" style="background: #6b7280;"></span>
+          <span class="cat-name">Gray</span>
+          <span class="cat-count" data-count-for="gray"></span>
+        </button>
+        <button class="category-item" data-category="bw">
+          <span class="cat-dot" style="background: #94a3b8;"></span>
+          <span class="cat-name">Black &amp; White</span>
+          <span class="cat-count" data-count-for="bw"></span>
+        </button>
+        <button class="category-item" data-category="favorites">
+          <span class="cat-dot cat-icon" style="background: #ec4899;">❤️</span>
+          <span class="cat-name">Favorites</span>
+          <span class="cat-count" data-count-for="favorites"></span>
+        </button>
+        <button class="category-item" data-category="palettes">
+          <span class="cat-dot cat-icon" style="background: #8b5cf6;">🎨</span>
+          <span class="cat-name">Palettes</span>
+          <span class="cat-count" data-count-for="palettes"></span>
+        </button>
+        <button class="category-item" data-category="picker">
+          <span class="cat-dot cat-icon" style="background: #6366f1;">🎯</span>
+          <span class="cat-name">Color Picker</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="gradient-blob" aria-hidden="true"></div>
+        <div class="color-count-text">16,777,216 Colors</div>
+        <p>Infinite possibilities. Just a click away.</p>
+      </div>
+    </aside>
+    <div id="sidebarOverlay" class="hidden"></div>
+
+    <!-- MAIN CONTENT -->
+    <main id="mainContent">
+      <div class="content-header">
+        <div class="content-header-left">
+          <h1 id="categoryTitle">All Colors</h1>
+          <p id="categorySubtitle">Browse through 16,777,216 colors. Use search, filters or pagination to explore.</p>
+        </div>
+        <div id="totalCountBadge">
+          <span>Total Colors</span>
+          <strong id="totalCount">16,777,216</strong>
+        </div>
+      </div>
+
+      <div class="content-toolbar">
+        <div class="toolbar-search">
+          <span aria-hidden="true">🔍</span>
+          <input id="quickSearch" type="text" placeholder="Quick search..." autocomplete="off" aria-label="Quick search in current view">
+        </div>
+        <select id="sortSelect" aria-label="Sort order">
+          <option value="popular">Sort: Popular</option>
+          <option value="hue">Sort: Hue</option>
+          <option value="brightness">Sort: Brightness</option>
+          <option value="value">Sort: Value</option>
+        </select>
+        <div class="view-toggle" role="group" aria-label="View mode">
+          <button id="viewGridBtn" class="active" aria-label="Grid view" title="Grid View">▦ Grid</button>
+          <button id="viewListBtn" aria-label="List view" title="List View">☰ List</button>
+        </div>
+        <select id="pageSizeSelect" aria-label="Page size">
+          <option value="64">Page Size: 64</option>
+          <option value="128">Page Size: 128</option>
+          <option value="256" selected>Page Size: 256</option>
+          <option value="500">Page Size: 500</option>
+        </select>
+        <button id="resetBtn" title="Reset Filters">Reset</button>
+      </div>
+
+      <div class="grid-info">
+        <span id="gridInfo">Showing 256 colors (Page 1 of 65,536)</span>
+      </div>
+      <div id="paginationTop" class="pagination" aria-label="Top pagination"></div>
+
+      <div id="colorGrid" class="color-grid grid-view" aria-label="Color grid"></div>
+
+      <div id="paginationBottom" class="pagination" aria-label="Bottom pagination"></div>
+    </main>
+
+    <!-- RIGHT PANEL - SELECTED COLOR -->
+    <aside id="selectedPanel">
+      <h2 class="panel-title">Selected Color</h2>
+      <div class="panel-section">
+        <div id="selectedPreview" class="color-preview" style="background-color: #CC33FF;" aria-label="Color preview swatch"></div>
+        <h3 id="selectedHexTitle">#CC33FF</h3>
+        <p id="selectedRgbTitle">RGB(204, 51, 255)</p>
+      </div>
+
+      <div class="panel-section">
+        <span class="section-label">Similar Shades</span>
+        <div id="similarColors" class="similar-dots" aria-label="Similar color shades">
+          <!-- 8 small color dots generated by JS -->
+        </div>
+      </div>
+
+      <div class="panel-section color-formats">
+        <div class="format-row">
+          <span class="format-label">HEX</span>
+          <span id="formatHex" class="format-value">#CC33FF</span>
+          <button class="copy-btn" id="copyHexBtn" aria-label="Copy HEX" title="Copy HEX">📋</button>
+        </div>
+        <div class="format-row">
+          <span class="format-label">RGB</span>
+          <span id="formatRgb" class="format-value">204  51  255</span>
+          <button class="copy-btn" id="copyRgbBtn" aria-label="Copy RGB" title="Copy RGB">📋</button>
+        </div>
+        <div class="format-row">
+          <span class="format-label">HSL</span>
+          <span id="formatHsl" class="format-value">289°  100%  60%</span>
+          <button class="copy-btn" id="copyHslBtn" aria-label="Copy HSL" title="Copy HSL">📋</button>
+        </div>
+        <div class="format-row">
+          <span class="format-label">HSV</span>
+          <span id="formatHsv" class="format-value">289°  80%  100%</span>
+          <button class="copy-btn" id="copyHsvBtn" aria-label="Copy HSV" title="Copy HSV">📋</button>
+        </div>
+      </div>
+
+      <div class="panel-section quick-actions">
+        <h4>Quick Actions</h4>
+        <button id="copyColorBtn" class="action-btn">📋 Copy Color</button>
+        <button id="copyAllBtn" class="action-btn">📑 Copy All Formats</button>
+        <button id="addFavoriteBtn" class="action-btn">❤️ Add to Favorites</button>
+        <button id="addToPaletteBtn" class="action-btn">🎨 Add to Palette</button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- BOTTOM PANEL -->
+  <section id="bottomPanel" class="collapsed">
+    <button id="bottomPanelToggle" aria-expanded="false" aria-controls="bottomPanelContent">
+      <span class="toggle-icon">▲</span> Extra Features &amp; Information
+    </button>
+    <div id="bottomPanelContent" class="bottom-grid">
+      <!-- Col 1: Sections Overview -->
+      <div class="bottom-col">
+        <div class="bottom-col-header">
+          <span class="bottom-col-icon">🎨</span>
+          <h3>Sections Overview</h3>
+        </div>
+        <p class="bottom-col-subtitle">15 curated categories spanning 16.7M colors</p>
+        <div id="bottomCatList" class="bottom-cat-list" aria-label="Category color counts">
+          <div class="bottom-cat-row" data-category="all">
+            <span class="bottom-cat-left"><span class="cat-dot" style="background:#6366f1;"></span> All Colors</span>
+            <span class="bottom-count">16,777,216</span>
+          </div>
+          <div class="bottom-cat-row" data-category="red">
+            <span class="bottom-cat-left"><span class="cat-dot" style="background:#ef4444;"></span> Red</span>
+            <span class="bottom-count">~1,400,000</span>
+          </div>
+          <div class="bottom-cat-row" data-category="orange">
+            <span class="bottom-cat-left"><span class="cat-dot" style="background:#f97316;"></span> Orange</span>
+            <span class="bottom-count">~1,400,000</span>
+          </div>
+          <div class="bottom-cat-row" data-category="yellow">
+            <span class="bottom-cat-left"><span class="cat-dot" style="background:#eab308;"></span> Yellow</span>
+            <span class="bottom-count">~1,200,000</span>
+          </div>
+          <div class="bottom-cat-row" data-category="green">
+            <span class="bottom-cat-left"><span class="cat-dot" style="background:#22c55e;"></span> Green</span>
+            <span class="bottom-count">~4,400,000</span>
+          </div>
+          <div class="bottom-cat-row" data-category="cyan">
+            <span class="bottom-cat-left"><span class="cat-dot" style="background:#06b6d4;"></span> Cyan</span>
+            <span class="bottom-count">~1,400,000</span>
+          </div>
+          <div class="bottom-cat-row" data-category="blue">
+            <span class="bottom-cat-left"><span class="cat-dot" style="background:#3b82f6;"></span> Blue</span>
+            <span class="bottom-count">~2,800,000</span>
+          </div>
+          <div class="bottom-cat-row" data-category="purple">
+            <span class="bottom-cat-left"><span class="cat-dot" style="background:#8b5cf6;"></span> Purple</span>
+            <span class="bottom-count">~2,800,000</span>
+          </div>
+          <div class="bottom-cat-row" data-category="pink">
+            <span class="bottom-cat-left"><span class="cat-dot" style="background:#ec4899;"></span> Pink</span>
+            <span class="bottom-count">~1,400,000</span>
+          </div>
+          <div class="bottom-cat-row" data-category="brown">
+            <span class="bottom-cat-left"><span class="cat-dot" style="background:#a16207;"></span> Brown</span>
+            <span class="bottom-count">~1,000,000</span>
+          </div>
+          <div class="bottom-cat-row" data-category="gray">
+            <span class="bottom-cat-left"><span class="cat-dot" style="background:#6b7280;"></span> Gray</span>
+            <span class="bottom-count">~800,000</span>
+          </div>
+          <div class="bottom-cat-row" data-category="bw">
+            <span class="bottom-cat-left"><span class="cat-dot" style="background:#94a3b8;"></span> Black &amp; White</span>
+            <span class="bottom-count">~1,300,000</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Col 2: Color Card Structure -->
+      <div class="bottom-col">
+        <div class="bottom-col-header">
+          <span class="bottom-col-icon">🃏</span>
+          <h3>Card Anatomy</h3>
+        </div>
+        <p class="bottom-col-subtitle">Interactive card anatomy &amp; data elements</p>
+        <div class="anatomy-card">
+          <div id="anatomySwatch" class="anatomy-swatch" style="background-color: #CC33FF;">
+            <span class="anatomy-badge">Active Swatch</span>
+          </div>
+          <div class="anatomy-details">
+            <div class="anatomy-line"><strong>HEX:</strong> <code id="anatomyHex">#CC33FF</code></div>
+            <div class="anatomy-line"><strong>RGB:</strong> <code id="anatomyRgb">204, 51, 255</code></div>
+            <div class="anatomy-line"><strong>HSL:</strong> <code id="anatomyHsl">289°, 100%, 60%</code></div>
+            <div class="anatomy-line"><strong>HSV:</strong> <code id="anatomyHsv">289°, 80%, 100%</code></div>
+            <div class="anatomy-actions">
+              <button id="anatomyCopyBtn" class="mini-btn" title="Quick copy HEX">📋 Quick Copy</button>
+              <button id="anatomyFavBtn" class="mini-btn" title="Toggle favorite">❤️ Favorite</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Col 3: Pagination + Lazy Load -->
+      <div class="bottom-col">
+        <div class="bottom-col-header">
+          <span class="bottom-col-icon">⚡</span>
+          <h3>Virtual Pagination</h3>
+        </div>
+        <p class="bottom-col-subtitle">High-performance virtual color space</p>
+        <div class="pagination-demo">
+          <span class="page-pill">1</span>
+          <span class="page-pill active">2</span>
+          <span class="page-pill">3</span>
+          <span class="page-ellipsis">…</span>
+          <span class="page-pill">65,536</span>
+        </div>
+        <ul class="perf-bullets">
+          <li><strong>16,777,216</strong> total addressable RGB colors</li>
+          <li><strong>Zero memory waste:</strong> On-demand O(1) calculations</li>
+          <li><strong>Strict DOM limit:</strong> Maximum 500 active cards in the DOM</li>
+          <li><strong>Smooth 60 FPS:</strong> Batched updates via DocumentFragment</li>
+          <li><strong>65,536 pages:</strong> Exact traversal of 24-bit color space</li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Search & Filters -->
+      <div class="bottom-col">
+        <div class="bottom-col-header">
+          <span class="bottom-col-icon">🔍</span>
+          <h3>Search &amp; Filters</h3>
+        </div>
+        <p class="bottom-col-subtitle">Multi-parameter real-time color filtering</p>
+        <div class="filter-controls-demo">
+          <div class="filter-demo-row">
+            <label>Supported Formats</label>
+            <div class="filter-tags-wrap">
+              <span class="filter-tag">#HEX</span>
+              <span class="filter-tag">RGB(r,g,b)</span>
+              <span class="filter-tag">HSL(h,s,l)</span>
+              <span class="filter-tag">148 CSS Names</span>
+            </div>
+          </div>
+          <div class="filter-demo-row">
+            <label>Sort Algorithms</label>
+            <div class="filter-tags-wrap">
+              <span class="filter-tag">Popular</span>
+              <span class="filter-tag">Hue</span>
+              <span class="filter-tag">Brightness</span>
+              <span class="filter-tag">Value</span>
+            </div>
+          </div>
+          <div class="filter-demo-row">
+            <p class="filter-meta-text">⚡ Debounced 300ms instant query engine with graceful fallback.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Col 5: Color Picker (Advanced) -->
+      <div class="bottom-col">
+        <div class="bottom-col-header">
+          <span class="bottom-col-icon">🎯</span>
+          <h3>Color Picker</h3>
+        </div>
+        <p class="bottom-col-subtitle">Interactive 2D spectrum canvas</p>
+        <div class="picker-widget">
+          <canvas id="pickerCanvas" width="240" height="90" aria-label="Interactive color picker canvas"></canvas>
+          <div class="picker-hue-bar">
+            <input type="range" id="pickerHue" min="0" max="360" value="289" aria-label="Picker hue spectrum">
+          </div>
+          <div class="picker-readouts">
+            <span id="pickerHexReadout">#CC33FF</span>
+            <span id="pickerRgbReadout">RGB(204, 51, 255)</span>
+          </div>
+          <div class="picker-preset-dots" aria-label="Color presets">
+            <button type="button" class="picker-preset" data-color="#EF4444" style="background:#ef4444" title="#ef4444" aria-label="Preset #ef4444"></button>
+            <button type="button" class="picker-preset" data-color="#F97316" style="background:#f97316" title="#f97316" aria-label="Preset #f97316"></button>
+            <button type="button" class="picker-preset" data-color="#EAB308" style="background:#eab308" title="#eab308" aria-label="Preset #eab308"></button>
+            <button type="button" class="picker-preset" data-color="#22C55E" style="background:#22c55e" title="#22c55e" aria-label="Preset #22c55e"></button>
+            <button type="button" class="picker-preset" data-color="#3B82F6" style="background:#3b82f6" title="#3b82f6" aria-label="Preset #3b82f6"></button>
+            <button type="button" class="picker-preset" data-color="#8B5CF6" style="background:#8b5cf6" title="#8b5cf6" aria-label="Preset #8b5cf6"></button>
+          </div>
+          <div class="picker-actions-row">
+            <button type="button" id="pickerApplyBtn" class="btn-secondary btn-sm">Select Color</button>
+            <button type="button" id="pickerAddPaletteBtn" class="btn-secondary btn-sm">🎨 Add to Palette</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Col 6: More Options & Extra Features -->
+      <div class="bottom-col">
+        <div class="bottom-col-header">
+          <span class="bottom-col-icon">🛠️</span>
+          <h3>Features &amp; Tools</h3>
+        </div>
+        <p class="bottom-col-subtitle">Quick access to built-in color tools</p>
+        <div class="feature-shortcuts-grid">
+          <button type="button" class="feature-shortcut-btn" data-feature="randomColor" title="Random Color Generator">
+            <span class="shortcut-icon">🎲</span>
+            <span class="shortcut-name">Random Color</span>
+          </button>
+          <button type="button" class="feature-shortcut-btn" data-feature="converter" title="Color Converter">
+            <span class="shortcut-icon">🔄</span>
+            <span class="shortcut-name">Converter</span>
+          </button>
+          <button type="button" class="feature-shortcut-btn" data-feature="gradient" title="Gradient Generator">
+            <span class="shortcut-icon">🌈</span>
+            <span class="shortcut-name">Gradient</span>
+          </button>
+          <button type="button" class="feature-shortcut-btn" data-feature="palettes" title="Saved Palettes">
+            <span class="shortcut-icon">📋</span>
+            <span class="shortcut-name">Palettes</span>
+          </button>
+          <button type="button" class="feature-shortcut-btn" data-feature="contrast" title="Contrast Checker">
+            <span class="shortcut-icon">♿</span>
+            <span class="shortcut-name">Contrast</span>
+          </button>
+          <button type="button" class="feature-shortcut-btn" data-feature="export" title="Export &amp; Download">
+            <span class="shortcut-icon">📥</span>
+            <span class="shortcut-name">Export</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES OVERLAY -->
+  <div id="featuresOverlay" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="featuresTitle">
+    <div class="modal-overlay"></div>
+    <div id="featuresPanel" class="modal-content">
+      <div class="modal-header">
+        <h2 id="featuresTitle">⚡ Extra Features</h2>
+        <button class="modal-close" aria-label="Close">✕</button>
+      </div>
+      <div id="featuresList" class="feature-list">
+        <!-- Populated by features.js -->
+      </div>
+      <button id="restoreDefaultsBtn" class="btn-secondary">Restore Defaults</button>
+    </div>
+  </div>
+
+  <!-- FEATURE MODAL 1: RANDOM COLOR -->
+  <div id="randomColorModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="randomColorTitle">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="randomColorTitle">🎲 Random Color Generator</h2>
+        <button class="modal-close" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body" id="randomColorBody">
+        <div id="randomPreview" class="color-preview-large" style="background-color: #6366f1;"></div>
+        <div class="modal-readout-group">
+          <div class="format-row">
+            <span class="format-label">HEX</span>
+            <span id="randomHex" class="format-value">#6366F1</span>
+          </div>
+          <div class="format-row">
+            <span class="format-label">RGB</span>
+            <span id="randomRgb" class="format-value">99  102  241</span>
+          </div>
+          <div class="format-row">
+            <span class="format-label">HSL</span>
+            <span id="randomHsl" class="format-value">239°  84%  67%</span>
+          </div>
+          <div class="format-row">
+            <span class="format-label">HSV</span>
+            <span id="randomHsv" class="format-value">239°  59%  95%</span>
+          </div>
+        </div>
+        <div class="modal-actions-row">
+          <button id="randomGenerateBtn" class="btn-primary">🎲 Generate Random Color</button>
+          <button id="randomCopyBtn" class="btn-secondary">📋 Copy HEX</button>
+          <button id="randomFavoriteBtn" class="btn-secondary">❤️ Save to Favorites</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURE MODAL 2: COLOR CONVERTER -->
+  <div id="converterModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="converterTitle">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="converterTitle">🔄 Color Converter</h2>
+        <button class="modal-close" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body" id="converterBody">
+        <div id="convertPreview" class="converter-preview" style="background-color: #6366f1;"></div>
+        
+        <div class="convert-input-group">
+          <label for="convertHex">HEX</label>
+          <div class="input-with-copy">
+            <input id="convertHex" type="text" placeholder="#6366F1" value="#6366F1">
+            <button id="convertCopyHexBtn" class="copy-btn" title="Copy HEX" aria-label="Copy HEX">📋</button>
+          </div>
+        </div>
+
+        <div class="convert-input-group">
+          <label>RGB (0-255)</label>
+          <div class="input-channel-row">
+            <input id="convertR" type="number" min="0" max="255" placeholder="R" value="99" aria-label="Red channel">
+            <input id="convertG" type="number" min="0" max="255" placeholder="G" value="102" aria-label="Green channel">
+            <input id="convertB" type="number" min="0" max="255" placeholder="B" value="241" aria-label="Blue channel">
+            <button id="convertCopyRgbBtn" class="copy-btn" title="Copy RGB" aria-label="Copy RGB">📋</button>
+          </div>
+        </div>
+
+        <div class="convert-input-group">
+          <label>HSL (H: 0-360°, S: 0-100%, L: 0-100%)</label>
+          <div class="input-channel-row">
+            <input id="convertH" type="number" min="0" max="360" placeholder="H°" value="239" aria-label="Hue">
+            <input id="convertS" type="number" min="0" max="100" placeholder="S%" value="84" aria-label="Saturation">
+            <input id="convertL" type="number" min="0" max="100" placeholder="L%" value="67" aria-label="Lightness">
+            <button id="convertCopyHslBtn" class="copy-btn" title="Copy HSL" aria-label="Copy HSL">📋</button>
+          </div>
+        </div>
+
+        <div class="convert-input-group">
+          <label>HSV (H: 0-360°, S: 0-100%, V: 0-100%)</label>
+          <div class="input-channel-row">
+            <input id="convertHsvH" type="number" min="0" max="360" placeholder="H°" value="239" aria-label="HSV Hue">
+            <input id="convertHsvS" type="number" min="0" max="100" placeholder="S%" value="59" aria-label="HSV Saturation">
+            <input id="convertHsvV" type="number" min="0" max="100" placeholder="V%" value="95" aria-label="HSV Value">
+            <button id="convertCopyHsvBtn" class="copy-btn" title="Copy HSV" aria-label="Copy HSV">📋</button>
+          </div>
+        </div>
+
+        <div class="modal-actions-row">
+          <button id="convertBtn" class="btn-primary">Convert &amp; Sync</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURE MODAL 3: GRADIENT GENERATOR -->
+  <div id="gradientModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="gradientTitle">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="gradientTitle">🌈 Gradient Generator</h2>
+        <button class="modal-close" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body" id="gradientBody">
+        <div id="gradientPreview" class="gradient-preview" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);"></div>
+
+        <div class="gradient-controls-row">
+          <div class="radio-group" role="radiogroup" aria-label="Gradient Type">
+            <label><input type="radio" name="gradientType" value="linear" checked> Linear</label>
+            <label><input type="radio" name="gradientType" value="radial"> Radial</label>
+          </div>
+          <div class="slider-group" id="gradientAngleGroup">
+            <label for="gradientAngle">Angle: <span id="gradientAngleVal">135°</span></label>
+            <input type="range" id="gradientAngle" min="0" max="360" value="135">
+          </div>
+        </div>
+
+        <div class="gradient-stops-header">
+          <span>Color Stops</span>
+          <button id="addStopBtn" class="btn-secondary btn-sm">+ Add Stop</button>
+        </div>
+        <div id="gradientStops" class="gradient-stops">
+          <div class="stop-row">
+            <input type="color" value="#6366f1" class="stop-color" aria-label="Stop color 1">
+            <input type="number" min="0" max="100" value="0" class="stop-pos" aria-label="Stop position 1">%
+            <button class="remove-stop-btn" title="Remove stop" aria-label="Remove stop">✕</button>
+          </div>
+          <div class="stop-row">
+            <input type="color" value="#8b5cf6" class="stop-color" aria-label="Stop color 2">
+            <input type="number" min="0" max="100" value="100" class="stop-pos" aria-label="Stop position 2">%
+            <button class="remove-stop-btn" title="Remove stop" aria-label="Remove stop">✕</button>
+          </div>
+        </div>
+
+        <label for="gradientCss">Generated CSS Code:</label>
+        <textarea id="gradientCss" class="code-textarea" readonly rows="3">background: linear-gradient(135deg, #6366f1, #8b5cf6);</textarea>
+        
+        <div class="modal-actions-row">
+          <button id="copyGradientCssBtn" class="btn-primary">📋 Copy CSS</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURE MODAL 4: SAVED PALETTES -->
+  <div id="palettesModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="palettesTitle">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="palettesTitle">📋 Saved Palettes</h2>
+        <button class="modal-close" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body" id="palettesBody">
+        <div class="create-palette-bar">
+          <input id="newPaletteName" type="text" placeholder="New palette name (e.g., Midnight Neon)..." aria-label="New palette name">
+          <button id="createPaletteBtn" class="btn-primary">Create Palette</button>
+        </div>
+        <div id="palettesList" class="palettes-list">
+          <!-- Populated dynamically by storage / features.js -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURE MODAL 5: CONTRAST CHECKER -->
+  <div id="contrastModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="contrastTitle">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="contrastTitle">♿ Contrast Checker</h2>
+        <button class="modal-close" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body" id="contrastBody">
+        <div class="contrast-inputs-row">
+          <div class="color-picker-input-group">
+            <label for="contrastFg">Foreground (Text)</label>
+            <div class="input-with-swatch">
+              <input id="contrastFg" type="text" value="#ffffff" aria-label="Foreground HEX">
+              <input type="color" id="contrastFgPicker" value="#ffffff" aria-label="Foreground color picker">
+            </div>
+          </div>
+          <button id="swapContrastBtn" class="btn-icon" title="Swap colors" aria-label="Swap colors">⇄</button>
+          <div class="color-picker-input-group">
+            <label for="contrastBg">Background</label>
+            <div class="input-with-swatch">
+              <input id="contrastBg" type="text" value="#0a0e27" aria-label="Background HEX">
+              <input type="color" id="contrastBgPicker" value="#0a0e27" aria-label="Background color picker">
+            </div>
+          </div>
+        </div>
+
+        <div id="contrastPreview" class="contrast-preview" style="color: #ffffff; background-color: #0a0e27;">
+          <h3>Normal Text Preview (16px)</h3>
+          <p>The quick brown fox jumps over the lazy dog. Good contrast improves readability for all users.</p>
+          <h2>Large Heading Preview (24px Bold)</h2>
+        </div>
+
+        <div class="contrast-results">
+          <div class="ratio-box">
+            <span>Contrast Ratio</span>
+            <strong id="contrastRatio">18.4:1</strong>
+          </div>
+          <div class="wcag-badges">
+            <div class="badge-item">
+              <span class="badge-label">Normal AA (≥4.5:1)</span>
+              <span id="badgeNormalAA" class="badge pass">PASS</span>
+            </div>
+            <div class="badge-item">
+              <span class="badge-label">Normal AAA (≥7.0:1)</span>
+              <span id="badgeNormalAAA" class="badge pass">PASS</span>
+            </div>
+            <div class="badge-item">
+              <span class="badge-label">Large AA (≥3.0:1)</span>
+              <span id="badgeLargeAA" class="badge pass">PASS</span>
+            </div>
+            <div class="badge-item">
+              <span class="badge-label">Large AAA (≥4.5:1)</span>
+              <span id="badgeLargeAAA" class="badge pass">PASS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURE MODAL 6: EXPORT / DOWNLOAD -->
+  <div id="exportModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="exportTitle">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="exportTitle">📥 Export / Download</h2>
+        <button class="modal-close" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body" id="exportBody">
+        <div class="export-options">
+          <div class="export-select-group">
+            <label for="exportFormatSelect">Export Format:</label>
+            <select id="exportFormatSelect">
+              <option value="css">CSS Variables (:root)</option>
+              <option value="json">JSON Data</option>
+              <option value="text">Plain Text (HEX)</option>
+              <option value="png">PNG Swatch Image</option>
+            </select>
+          </div>
+          <div class="export-select-group">
+            <label for="exportSourceSelect">Source:</label>
+            <select id="exportSourceSelect">
+              <option value="current">Current Selected Color</option>
+              <option value="favorites">All Favorites</option>
+              <option value="activePalette">Active Palette</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="exportPreview" class="export-preview">
+          <textarea id="exportTextarea" readonly rows="8" class="code-textarea" aria-label="Export code preview">/* ColorPalette CSS Variables */
+:root {
+  --selected-color: #CC33FF;
+  --selected-rgb: rgb(204, 51, 255);
+  --selected-hsl: hsl(289, 100%, 60%);
+}</textarea>
+          <canvas id="exportCanvas" class="hidden" width="400" height="200" aria-label="PNG export preview"></canvas>
+        </div>
+
+        <div class="modal-actions-row">
+          <button id="downloadExportBtn" class="btn-primary">📥 Download File</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SETTINGS MODAL -->
+  <div id="settingsModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="settingsTitle">⚙️ Settings</h2>
+        <button class="modal-close" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body" id="settingsBody">
+        <div class="setting-row">
+          <label for="settingTheme">Interface Theme</label>
+          <select id="settingTheme">
+            <option value="dark" selected>Dark Navy (Default)</option>
+            <option value="light">Light Theme</option>
+          </select>
+        </div>
+        <div class="setting-row">
+          <label for="settingPageSize">Default Page Size</label>
+          <select id="settingPageSize">
+            <option value="64">64 Colors</option>
+            <option value="128">128 Colors</option>
+            <option value="256" selected>256 Colors</option>
+            <option value="500">500 Colors</option>
+          </select>
+        </div>
+        <div class="setting-row">
+          <label for="settingSort">Default Sort Algorithm</label>
+          <select id="settingSort">
+            <option value="popular" selected>Popular (Vibrancy-first)</option>
+            <option value="hue">Hue Progression</option>
+            <option value="brightness">Perceived Brightness</option>
+            <option value="value">Direct RGB Value</option>
+          </select>
+        </div>
+        <div class="setting-actions">
+          <button id="resetSettingsBtn" class="btn-secondary">Reset Settings to Default</button>
+          <button id="resetAllDataBtn" class="btn-danger">⚠️ Reset All Data (Clear Favorites &amp; Palettes)</button>
+          <p class="warning-text">Warning: Reset All Data will permanently erase all custom palettes and saved favorites from LocalStorage.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- MOBILE BOTTOM SHEET -->
+  <div id="bottomSheet" class="hidden" role="dialog" aria-modal="true">
+    <div id="sheetOverlay" class="sheet-overlay"></div>
+    <div id="sheetContent" class="sheet-content">
+      <div class="sheet-handle"></div>
+      <div id="sheetBody"></div>
+    </div>
+  </div>
+
+  <!-- MOBILE FLOATING BUTTON -->
+  <button id="mobileMoreBtn" class="mobile-only fab" aria-label="More features">⚡</button>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>@ঔৣ፝ N4! • 16,777,216 Colors • only using HTML + CSS + JavaScript</p>
+    <p class="footer-sub">Infinite colors. Limitless creativity. @yuzaki_x_nasa
+    </p>
+  </footer>
+
+  <!-- SCRIPT LOADING ORDER (EXACT SPECIFICATION) -->
+  <script src="colors.js"></script>
+  <script src="storage.js"></script>
+  <script src="features.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
